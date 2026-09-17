@@ -1,0 +1,2 @@
+import { demoRisk, forwardOrDemo } from "../_shared";
+export async function POST(request:Request){const body=await request.json() as {latitude?:number;longitude?:number};if(!Number.isFinite(body.latitude)||!Number.isFinite(body.longitude))return Response.json({message:"latitude와 longitude가 필요합니다."},{status:400});return forwardOrDemo("/api/v1/risks/location",body,()=>demoRisk("관악구",[body.longitude!,body.latitude!]))}
