@@ -14,7 +14,7 @@ export async function GET(request:Request){
     return new Response("Map tile out of range",{status:400});
   }
   const upstream=await fetch(`https://tile.openstreetmap.org/${z}/${x}/${y}.png`,{
-    headers:{"User-Agent":"SeoulSafeLink/1.0 (public safety map)"},
+    headers:{"User-Agent":"SafeLink/1.0 (public safety map)"},
   });
   if(!upstream.ok)return new Response("Map tile unavailable",{status:502});
   return new Response(upstream.body,{headers:{
